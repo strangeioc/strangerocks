@@ -1,0 +1,17 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/strangerocks/game/config/GameContext.cs">
+    <Files>
+      <File FileName="Assets/scripts/strangerocks/game/config/GameContext.cs" Line="26" Column="56" />
+      <File FileName="Assets/scripts/strangerocks/ui/config/UIContext.cs" Line="38" Column="56" />
+      <File FileName="Assets/scripts/strangerocks/main/config/MainContext.cs" Line="23" Column="75" />
+      <File FileName="Assets/scripts/strangerocks/ui/view/OnscreenControlsView.cs" Line="41" Column="16" />
+      <File FileName="Assets/scripts/strangerocks/ui/view/OnscreenControlsMediator.cs" Line="68" Column="5" />
+      <File FileName="Assets/scripts/strangerocks/game/view/ShipMediator.cs" Line="36" Column="4" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

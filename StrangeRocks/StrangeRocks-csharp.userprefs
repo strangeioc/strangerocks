@@ -1,0 +1,17 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/strangerocks/game/controller/player/DestroyPlayerCommand.cs">
+    <Files>
+      <File FileName="Assets/scripts/strangerocks/game/controller/missile/FireMissileCommand.cs" Line="14" Column="43" />
+      <File FileName="Assets/scripts/strangerocks/game/controller/missile/MissileInstanceProvider.cs" Line="29" Column="22" />
+      <File FileName="Assets/scripts/strangerocks/game/config/GameContext.cs" Line="89" Column="60" />
+      <File FileName="Assets/scripts/strangerocks/game/controller/level/CleanupLevelCommand.cs" Line="12" Column="3" />
+      <File FileName="Assets/scripts/strangerocks/game/controller/player/CreatePlayerCommand.cs" Line="16" Column="49" />
+      <File FileName="Assets/scripts/strangerocks/game/controller/player/DestroyPlayerCommand.cs" Line="38" Column="73" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

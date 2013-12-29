@@ -1,0 +1,46 @@
+﻿using System;
+using strange.extensions.command.impl;
+using UnityEngine;
+using strange.extensions.pool.api;
+
+namespace strange.examples.strangerocks.game
+{
+	public class CreateRockCommand : Command
+	{
+		[Inject(GameElement.GAME_FIELD)]
+		public GameObject gameField{ get; set; }
+
+		//We're drawing instances from a pool, instead of wasting our resources.
+		[Inject(GameElement.ROCK_POOL)]
+		public IPool<GameObject> pool{ get; set; }
+
+		[Inject]
+		public int level{ get; set; }
+
+		[Inject]
+		public Vector3 localPos{ get; set; }
+
+		public override void Execute ()
+		{
+
+			GameObject rockGO = pool.GetInstance();
+			rockGO.SetActive (true);
+
+			rockGO.transform.localPosition = localPos;
+			rockGO.transform.localScale = Vector3.one / level;
+			rockGO.layer = LayerMask.NameToLayer ("enemy");
+			rockGO.GetComponent<RockView> ().level = level;
+
+			Vector3 expPt = rockGO.transform.localPosition;
+			expPt.x += UnityEngine.Random.Range (2f, 4f);
+			expPt.x *= (UnityEngine.Random.Range (0f, 1f) < .5f) ? -1f : 1f;
+			expPt.z += UnityEngine.Random.Range (2f, 4f);
+			expPt.z *= (UnityEngine.Random.Range (0f, 1f) < .5f) ? -1f : 1f;
+			rockGO.rigidbody.AddExplosionForce (UnityEngine.Random.Range (800f, 1000f), expPt, 16f);
+
+			rockGO.transform.parent = gameField.transform;
+
+		}
+	}
+}
+
