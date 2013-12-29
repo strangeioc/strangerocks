@@ -1,4 +1,6 @@
-﻿using System;
+﻿//Write in all the Cross-Context bindings
+
+using System;
 using UnityEngine;
 using strange.extensions.context.impl;
 using strange.examples.strangerocks.game;
