@@ -24,18 +24,22 @@ namespace strange.examples.strangerocks
 		[Inject(ContextKeys.CONTEXT_VIEW)]
 		public GameObject contextView{ get; set; }
 
-		private MonoBehaviour mb;
+		private RoutineRunnerBehaviour mb;
 
 		[PostConstruct]
 		public void PostConstruct()
 		{
-			mb = contextView.AddComponent<MonoBehaviour> ();
+			mb = contextView.AddComponent<RoutineRunnerBehaviour> ();
 		}
 
 		public Coroutine StartCoroutine(IEnumerator routine)
 		{
 			return mb.StartCoroutine(routine);
 		}
+	}
+
+	public class RoutineRunnerBehaviour : MonoBehaviour
+	{
 	}
 }
 
