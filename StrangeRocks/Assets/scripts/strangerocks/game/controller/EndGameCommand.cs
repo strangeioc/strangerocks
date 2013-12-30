@@ -1,4 +1,6 @@
-﻿using System;
+﻿//At the end of the Game, do whatever cleanup is required.
+
+using System;
 using strange.extensions.command.impl;
 using UnityEngine;
 
@@ -7,12 +9,12 @@ namespace strange.examples.strangerocks.game
 	public class EndGameCommand : Command
 	{
 
-		[Inject(GameElement.GAME_FIELD)]
-		public GameObject gameField{ get; set; }
+		[Inject]
+		public ISpawner spawner{ get; set; }
 
 		public override void Execute ()
 		{
-			UnityEngine.Object.Destroy (gameField.GetComponent<EnemySpawner> ());
+			spawner.Stop ();
 		}
 	}
 }

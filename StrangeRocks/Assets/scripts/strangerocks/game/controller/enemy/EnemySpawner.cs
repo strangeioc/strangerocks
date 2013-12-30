@@ -1,4 +1,7 @@
-﻿using System;
+﻿//This "View" is more accurately a "Controller" that requires some MonoBehaviour capability.
+//In this case, we ne
+
+using System;
 using UnityEngine;
 using strange.extensions.mediation.impl;
 using System.Collections;

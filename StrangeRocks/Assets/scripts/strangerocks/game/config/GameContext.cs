@@ -49,8 +49,8 @@ namespace strange.examples.strangerocks.game
 
 				injectionBinder.Bind<IGameModel> ().To<GameModel> ().ToSingleton ();
 			}
-
-
+				
+			injectionBinder.Bind<ISpawner> ().To<EnemySpawner>().ToSingleton ();
 
 			//Pools
 			//Pools provide a recycling system that makes the game much more efficient. Instead of destroying instances
@@ -169,6 +169,16 @@ namespace strange.examples.strangerocks.game
 			// (Hint: all our pools for this game are identical, but for the content of the InstanceProvider)
 			IPool<GameObject> enemyMissilePool = injectionBinder.GetInstance<IPool<GameObject>> (GameElement.ENEMY_MISSILE_POOL);
 			enemyMissilePool.instanceProvider = new ResourceInstanceProvider ("enemy_missile", LayerMask.NameToLayer ("enemy"));
+			//Strange Pools by default "inflate" as necessary. This means that if you only
+			//have one instance in the pool and require another, the pool will instantiate a second.
+			//If you have two instances and need another, the pool will inflate again.
+			//So long as you keep feeding instances back to the pool, there will always be enough instances,
+			//and you'll never create more than you require.
+			//The pool can use one of two inflation strategies:
+			//1. DOUBLE (the default) is useful when your pool consists of objects that just exist in memory.
+			//2. INCREMENT is better for onscreen objects as we're doing here. By INCREMENT-inflating, you'll
+			//   get one new GameObject whenever you need one. This minimizes the necessary management of
+			//   Views whenever the pool inflates.
 			enemyMissilePool.inflationType = PoolInflationType.INCREMENT;
 
 			IPool<GameObject> enemyPool = injectionBinder.GetInstance<IPool<GameObject>> (GameElement.ENEMY_POOL);
