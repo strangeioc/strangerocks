@@ -1,15 +1,20 @@
-﻿//This "View" is more accurately a "Controller" that requires some MonoBehaviour capability.
-//In this case, we ne
+﻿//Since we have an injectable RoutineRunner, we can move
+//some behaviours that should be Controllers out of the classification of View.
+
+//Here's an example. This mechanism simply waits a few seconds, then spawns a new enemy.
+//Since it's pure controller, there's no good reason for it to be taking up space/
+//cycles in the visual portion of the game. So we simply write it as a Controller
+//and inject in the MonoBehaviour bit.
 
 using System;
-using UnityEngine;
 using strange.extensions.mediation.impl;
 using System.Collections;
+using UnityEngine;
 
 namespace strange.examples.strangerocks.game
 {
 
-	public class EnemySpawner : View
+	public class EnemySpawner : ISpawner
 	{
 		[Inject]
 		public CreateEnemySignal createEnemySignal{ get; set; }
@@ -17,18 +22,29 @@ namespace strange.examples.strangerocks.game
 		[Inject]
 		public IScreenUtil screenUtil{ get; set; }
 
-		public float minSpawnSeconds = 2f;
-		public float maxSpawnSeconds = 5f;
+		[Inject]
+		public IRoutineRunner routineRunner{ get; set; }
 
-		protected override void Start ()
+		//Arguably these should be in a gameConfig somewhere
+		private float minSpawnSeconds = 2f;
+		private float maxSpawnSeconds = 5f;
+
+		private bool running = false;
+
+		public void Start ()
 		{
-			base.Start ();
-			StartCoroutine (spawn ());
+			running = true;
+			routineRunner.StartCoroutine (spawn ());
+		}
+
+		public void Stop()
+		{
+			running = false;
 		}
 
 		IEnumerator spawn()
 		{
-			while (true)
+			while (running)
 			{
 				yield return new WaitForSeconds (UnityEngine.Random.Range(minSpawnSeconds, maxSpawnSeconds));
 				Vector3 startPos = screenUtil.RandomPositionOnLeft ();

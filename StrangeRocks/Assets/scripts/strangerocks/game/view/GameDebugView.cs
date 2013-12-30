@@ -1,6 +1,7 @@
-﻿/// <summary>
-/// UI to be used when the game is running in standalone mode.
-/// </summary>
+﻿//UI to be used when the game is running in standalone mode.
+//This allows the GameContext to be completely self-standing.
+//When the game in instantiated as part of a multi-context app,
+//this View and its associated Mediator are not instantiated.
 
 using System;
 using strange.extensions.mediation.impl;
@@ -12,6 +13,7 @@ namespace strange.examples.strangerocks.game
 
 	public class GameDebugView : View
 	{
+		//An enum of states for this View's controls
 		internal enum ScreenState
 		{
 			IDLE,
@@ -20,7 +22,14 @@ namespace strange.examples.strangerocks.game
 			LEVEL_IN_PROGRESS,
 		}
 
-
+		//INJECTING INTO VIEWS IS GENERALlY A BAD, BAD THING!!!!!!!!!
+		//I'm deliberately including this as an example of the right time to do it.
+		//ScreenUtil is uniquely interested in matching screen coordinates/relative camera
+		//positions with the world/local positions of GameObjects. As such, it is pure View
+		//logic. Injecting a bit of pure View logic into the View allows access to the right utility
+		//in the right place.
+		//DO NOT USE INJECTION IN VIEWS TO INJECT THINGS THAT BELONG IN THE MEDIATOR,
+		//such as Signals, GameModels, etc.
 		[Inject]
 		public IScreenUtil screenUtil { get; set; }
 
@@ -41,6 +50,7 @@ namespace strange.examples.strangerocks.game
 
 		protected void OnGUI()
 		{
+			//display the correct UI, based on ScreenState
 			switch (state)
 			{
 			case ScreenState.IDLE:

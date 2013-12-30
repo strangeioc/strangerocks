@@ -1,4 +1,6 @@
-﻿using System;
+﻿//Kick off the level
+
+using System;
 using strange.extensions.command.impl;
 using UnityEngine;
 

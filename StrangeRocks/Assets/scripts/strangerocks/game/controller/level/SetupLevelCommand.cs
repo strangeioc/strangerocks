@@ -1,4 +1,6 @@
-﻿using System;
+﻿//At the start of each level, place the player and the rocks
+
+using System;
 using strange.extensions.command.impl;
 using UnityEngine;
 using strange.extensions.context.api;

@@ -1,4 +1,6 @@
-﻿using System;
+﻿//Executes when the user clears a level. Increments the game level.
+
+using System;
 using strange.extensions.command.impl;
 
 namespace strange.examples.strangerocks.game

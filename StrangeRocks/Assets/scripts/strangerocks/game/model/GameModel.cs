@@ -1,4 +1,6 @@
-﻿using System;
+﻿//Storage of data that reflects how the player is doing
+
+using System;
 
 namespace strange.examples.strangerocks.game
 {

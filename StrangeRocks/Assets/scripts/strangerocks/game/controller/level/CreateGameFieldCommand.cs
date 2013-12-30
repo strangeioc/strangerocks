@@ -1,4 +1,6 @@
-﻿using System;
+﻿//Instantiates and binds a special GAME_FIELD GameObject to parent the rest of the game elements.
+
+using System;
 using strange.extensions.command.impl;
 using UnityEngine;
 using strange.extensions.context.api;

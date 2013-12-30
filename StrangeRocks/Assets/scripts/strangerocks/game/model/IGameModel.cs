@@ -1,4 +1,6 @@
-﻿using System;
+﻿//The API for a model representing how the player is doing
+
+using System;
 
 namespace strange.examples.strangerocks.game
 {

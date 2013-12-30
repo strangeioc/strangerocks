@@ -1,4 +1,11 @@
-﻿using System;
+﻿//Create the ShipView
+
+//NOTE: We're not using pools to create the ShipView. Arguably we should...
+//or at least store the single instance. As a practical matter, Ship creation
+//and destruction is "rare" in game terms, happening only when the player gets
+//killed or on the turnover of a level. The wastage of resources is therefore trivial.
+
+using System;
 using strange.extensions.command.impl;
 using UnityEngine;
 
@@ -29,6 +36,7 @@ namespace strange.examples.strangerocks.game
 
 			injectionBinder.Bind<ShipView> ().ToValue (shipGO.GetComponent<ShipView> ()).ToName (GameElement.PLAYER_SHIP);
 
+			//Whenever a ship is created, the game is on!
 			gameModel.levelInProgress = true;
 		}
 	}

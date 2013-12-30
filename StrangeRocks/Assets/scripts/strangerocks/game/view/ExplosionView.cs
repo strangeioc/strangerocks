@@ -1,4 +1,7 @@
-﻿using System;
+﻿//A View for the explosion of the ShipView
+//This View is attached to the player_explosion prefab in Unity.
+
+using System;
 using strange.extensions.mediation.impl;
 using UnityEngine;
 using strange.extensions.signal.impl;

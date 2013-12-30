@@ -1,4 +1,8 @@
-﻿using System;
+﻿//Bitwise values for user input.
+//In KeyboardInput and OnscreenControlsView, these values are combined
+//bitwise to indicate the user's input.
+
+using System;
 
 namespace strange.examples.strangerocks
 {

@@ -1,4 +1,6 @@
-﻿using System;
+﻿//The "View" for a Missile. This MonoBehaviour is attached to the missile prefab inside Unity.
+
+using System;
 using strange.extensions.mediation.impl;
 using UnityEngine;
 using strange.extensions.signal.impl;
@@ -21,6 +23,7 @@ namespace strange.examples.strangerocks.game
 		{
 			if (gameObject.activeSelf && !mainRenderer.isVisible)
 			{
+				//Missile flew offscreen
 				exitScreenSignal.Dispatch ();
 			}
 		}

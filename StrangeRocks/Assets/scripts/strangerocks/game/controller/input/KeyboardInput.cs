@@ -1,4 +1,6 @@
-﻿//Note, BTW, that I'm using bitwise evaluation to handle the key input. If you're not familiar with
+﻿//Input from the Keyboard using arrow keys and spacebar
+
+//Note, BTW, that I'm using bitwise evaluation to handle the key input. If you're not familiar with
 //bitwise operations, I suggest you look it up. It's very useful for just this sort of scenario.
 //http://en.wikipedia.org/wiki/Bitwise_operation
 

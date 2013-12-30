@@ -1,4 +1,6 @@
-﻿using System;
+﻿//The "View" for an Enemy. This MonoBehaviour is attached to the enemy prefab inside Unity.
+
+using System;
 using UnityEngine;
 using strange.extensions.mediation.impl;
 using strange.extensions.signal.impl;
@@ -8,11 +10,13 @@ namespace strange.examples.strangerocks.game
 {
 	public class EnemyView : View
 	{
+		//These Signals inform the Mediator that certain events have occurred
 		internal Signal exitScreenSignal = new Signal ();
 		internal Signal fireWeaponSignal = new Signal ();
 
 		public Renderer mainRenderer;
 
+		//Settable/configurable values in Unity
 		public float rotationSpeed = .1f;
 		public float minXSpeed = 100f;
 		public float maxXSpeed = 200f;
@@ -23,11 +27,16 @@ namespace strange.examples.strangerocks.game
 		public float minMissilePause = 1f;
 		public float maxMissilePause = 3f;
 
+		//Set from CreateEnemyCommand to determine this Enemy's level (higher levels are faster, smaller, worth more points)
 		public int level;
 
-		public Vector3 motiveForce;
+		//The force driving this ship
+		private Vector3 motiveForce;
 
-		public void init(int level)
+		//Initialize called by the Mediator. Init is a little like
+		//Start()...but by calling it from the Mediator's OnRegister(),
+		//we know the Mediator is in place before doing anything important.
+		public void Init(int level)
 		{
 			this.level = level;
 			courseCorrect ();
@@ -42,8 +51,10 @@ namespace strange.examples.strangerocks.game
 
 		void FixedUpdate()
 		{
+			//Some silly rotation for effect
 			mainRenderer.transform.Rotate (motiveForce * rotationSpeed);
 
+			//Have we flown offscreen?
 			if (gameObject.activeSelf && !mainRenderer.isVisible)
 			{
 				StopAllCoroutines ();
@@ -51,6 +62,7 @@ namespace strange.examples.strangerocks.game
 			}
 		}
 
+		//Pause for a random number of seconds before changing course
 		IEnumerator delayThenCourseCorrect()
 		{
 			while (true)
@@ -60,6 +72,7 @@ namespace strange.examples.strangerocks.game
 			}
 		}
 
+		//Pause for a random number of seconds before firing a missile
 		IEnumerator delayThenFireMissile()
 		{
 			while (true)
@@ -69,6 +82,7 @@ namespace strange.examples.strangerocks.game
 			}
 		}
 
+		//Change direction
 		void courseCorrect()
 		{
 			motiveForce = new Vector3 (

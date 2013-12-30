@@ -1,4 +1,9 @@
-﻿using System;
+﻿//When we start the module, take care of any startup requriements.
+
+//This version is called only when GameContext runs in standalone mode.
+//It instantiates the IME and puts a debugview on-screen
+
+using System;
 using strange.extensions.command.impl;
 using UnityEngine;
 using strange.extensions.context.api;

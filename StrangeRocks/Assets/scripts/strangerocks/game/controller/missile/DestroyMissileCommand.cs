@@ -1,4 +1,12 @@
-﻿using System;
+﻿//A Missile can be destroyed in one of two ways:
+//1. It can strike something (rock, enemy, player, another missile.
+//2. It can fly offscreen.
+
+//We're using pooling, so Missiles are never really "destroyed". We just move
+//them offscreen and reset them until we need one again. This is more memory
+//and performance friendly than the constant creation/destruction of Objects.
+
+using System;
 using strange.extensions.command.impl;
 using UnityEngine;
 using strange.extensions.pool.api;
@@ -8,19 +16,23 @@ namespace strange.examples.strangerocks.game
 {
 	public class DestroyMissileCommand : Command
 	{
-
+		//The missile being destroyed
 		[Inject]
 		public MissileView missileView{ get; set; }
 
+		//An identifier of MISSILE_POOL (player) or ENEMY_MISSILE_POOL.
 		[Inject]
 		public GameElement id{ get; set; }
 
+		//The player's missile pool
 		[Inject(GameElement.MISSILE_POOL)]
 		public IPool<GameObject> playerMissilePool{ get; set; }
 
+		//The enemy's missile pool
 		[Inject(GameElement.ENEMY_MISSILE_POOL)]
 		public IPool<GameObject> enemyMissilePool{ get; set; }
 
+		//A place offscreen to place the recycled GameObjects
 		private static Vector3 PARKED_POS = new Vector3(1000f, 0f, 1000f);
 
 		public override void Execute ()
