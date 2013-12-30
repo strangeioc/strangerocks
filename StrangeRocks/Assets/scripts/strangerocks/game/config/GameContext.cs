@@ -109,9 +109,9 @@ namespace strange.examples.strangerocks.game
 			Camera cam = (contextView as GameObject).GetComponentInChildren<Camera> ();
 			if (cam == null)
 			{
-				throw new Exception ("EstablishGameCameraCommand couldn't find the game camera");
+				throw new Exception ("GameContext couldn't find the game camera");
 			}
-			injectionBinder.Bind<Camera> ().ToValue (cam).ToName ("GameCamera");
+			injectionBinder.Bind<Camera> ().ToValue (cam).ToName (StrangeRocksElement.GAME_CAMERA);
 
 			// Configure the pools.
 			// (Hint: all our pools for this game are identical, but for the content of the InstanceProvider)

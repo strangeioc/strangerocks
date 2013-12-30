@@ -55,7 +55,7 @@ namespace strange.examples.strangerocks.ui
 			{
 				throw new Exception ("Couldn't find the UI camera");
 			}
-			injectionBinder.Bind<Camera> ().ToValue (cam).ToName ("GameCamera");
+			injectionBinder.Bind<Camera> ().ToValue (cam).ToName (StrangeRocksElement.GAME_CAMERA);
 			base.postBindings ();
 
 			if (Context.firstContext != this)
