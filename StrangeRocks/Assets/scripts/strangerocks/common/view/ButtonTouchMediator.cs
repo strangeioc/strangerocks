@@ -1,4 +1,6 @@
-﻿using System;
+﻿//Mediates the ButtonView on devices
+
+using System;
 using UnityEngine;
 using strange.extensions.mediation.impl;
 
@@ -9,7 +11,7 @@ namespace strange.examples.strangerocks.ui
 		[Inject]
 		public ButtonView view{ get; set; }
 
-		[Inject("GameCamera")]
+		[Inject(StrangeRocksElement.GAME_CAMERA)]
 		public Camera gameCamera{ get; set; }
 
 		#if !UNITY_EDITOR && (UNITY_ANDROID || UNITY_IPHONE)

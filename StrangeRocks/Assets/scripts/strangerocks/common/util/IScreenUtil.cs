@@ -1,4 +1,7 @@
-﻿using System;
+﻿//Interface for a service which provides camera utilities
+//(see ScreenUtil)
+
+using System;
 using UnityEngine;
 
 namespace strange.examples.strangerocks

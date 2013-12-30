@@ -1,4 +1,14 @@
-﻿using System;
+﻿//A basic button View
+//Notice how we use TWO different mediators to read the clicks:
+//1. ButtonMouseMediator
+//   reads MouseClicks and is useful in the Editor or for web/desktop
+//2. ButtonTouchMediator
+//   reads Touches and is useful on devices.
+
+//Look at UIContext to see how we map the appropriate Mediator for the given
+//platform.
+
+using System;
 using strange.extensions.mediation.impl;
 using strange.extensions.signal.impl;
 using UnityEngine;

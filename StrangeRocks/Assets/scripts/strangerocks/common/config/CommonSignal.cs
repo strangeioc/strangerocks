@@ -1,4 +1,6 @@
-﻿using System;
+﻿//This file contains all the signals that are dispatched between Contexts
+
+using System;
 using strange.extensions.signal.impl;
 
 namespace strange.examples.strangerocks

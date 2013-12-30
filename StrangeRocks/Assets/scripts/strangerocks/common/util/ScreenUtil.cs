@@ -1,9 +1,12 @@
-﻿using System;
+﻿//Utility class providing Camera/GameObject mapping capabilities
+
+using System;
 using UnityEngine;
 using strange.extensions.injector.api;
 
 namespace strange.examples.strangerocks
 {
+	//Anchors to the corners/edges/center of screen
 	public enum ScreenAnchor
 	{
 		LEFT,
@@ -14,14 +17,18 @@ namespace strange.examples.strangerocks
 		CENTER_HORIZONTAL,
 	}
 
-
+	//OUR ONE EXAMPLE OF IMPLICIT BINDINGS
+	//You'll note that there is no binding of IScreenUtil to ScreenUtil in any of the Contexts.
+	//It's handled automatically here.
 	[Implements(typeof(IScreenUtil), InjectionBindingScope.SINGLE_CONTEXT)]
 	public class ScreenUtil : IScreenUtil
 	{
-
-		[Inject("GameCamera")]
+		//The camera in use by the Context
+		[Inject(StrangeRocksElement.GAME_CAMERA)]
 		public Camera gameCamera{ get; set; }
 
+		//Get a rect that represents the provided values as a percentage of the screen
+		//GameDebugView uses this to create resolution-independent positions for GUI elements
 		public Rect GetScreenRect (float x, float y, float width, float height)
 		{
 			float screenWidth = Screen.width;
@@ -32,12 +39,16 @@ namespace strange.examples.strangerocks
 				height * screenHeight);
 		}
 
+		//Not actually used. A method for determining is a gameObject is visible to the camera.
+		//I ended up just using renderer.isVisible
 		public bool IsInCamera(GameObject go)
 		{
 			Plane[] planes = GeometryUtility.CalculateFrustumPlanes (gameCamera);
 			return GeometryUtility.TestPlanesAABB (planes, go.renderer.bounds);
 		}
 
+		//When a rock or the player exists the screen,
+		//This "wraps" the GameObject to the far side of the screen
 		public void TranslateToFarSide(GameObject go)
 		{
 			Vector3 pos = go.transform.localPosition;
@@ -65,6 +76,7 @@ namespace strange.examples.strangerocks
 			go.transform.localPosition = newPos;
 		}
 
+		//Calculates entry positions for the enemy spaceships
 		public Vector3 RandomPositionOnLeft()
 		{
 			Vector3 viewPos = new Vector3 (0f, UnityEngine.Random.Range(0f, 1f), gameCamera.transform.localPosition.y);
@@ -72,6 +84,7 @@ namespace strange.examples.strangerocks
 			return retv;
 		}
 
+		//Return a Vector3 placing a UI element at some anchored place onscreen
 		public Vector3 GetAnchorPosition(ScreenAnchor horizontal, ScreenAnchor vertical)
 		{
 			float x;

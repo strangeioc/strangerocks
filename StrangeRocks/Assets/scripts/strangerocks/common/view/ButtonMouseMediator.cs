@@ -1,4 +1,6 @@
-﻿using System;
+﻿//Mediates the ButtonView in Editor/Desktop/Web...wherever clicks are appropriate
+
+using System;
 using strange.extensions.mediation.impl;
 
 namespace strange.examples.strangerocks.ui
