@@ -176,10 +176,12 @@
      <Compile Include="Assets\scripts\strangerocks\game\controller\EndGameCommand.cs" />
      <Compile Include="Assets\scripts\strangerocks\game\controller\GameIndependentStartCommand.cs" />
      <Compile Include="Assets\scripts\strangerocks\game\controller\GameModuleStartCommand.cs" />
+     <Compile Include="Assets\scripts\strangerocks\game\controller\ISpawner.cs" />
      <Compile Include="Assets\scripts\strangerocks\game\controller\StartGameCommand.cs" />
      <Compile Include="Assets\scripts\strangerocks\game\controller\enemy\CreateEnemyCommand.cs" />
      <Compile Include="Assets\scripts\strangerocks\game\controller\enemy\CreateEnemySpawnerCommand.cs" />
      <Compile Include="Assets\scripts\strangerocks\game\controller\enemy\DestroyEnemyCommand.cs" />
+     <Compile Include="Assets\scripts\strangerocks\game\controller\enemy\EnemySpawner.cs" />
      <Compile Include="Assets\scripts\strangerocks\game\controller\input\GameInputEvent.cs" />
      <Compile Include="Assets\scripts\strangerocks\game\controller\input\IInput.cs" />
      <Compile Include="Assets\scripts\strangerocks\game\controller\input\KeyboardInput.cs" />
@@ -201,7 +203,6 @@
      <Compile Include="Assets\scripts\strangerocks\game\view\EnemyMediator.cs" />
      <Compile Include="Assets\scripts\strangerocks\game\view\EnemyMissileMediator.cs" />
      <Compile Include="Assets\scripts\strangerocks\game\view\EnemyMissileView.cs" />
-     <Compile Include="Assets\scripts\strangerocks\game\view\EnemySpawner.cs" />
      <Compile Include="Assets\scripts\strangerocks\game\view\EnemyView.cs" />
      <Compile Include="Assets\scripts\strangerocks\game\view\ExplosionMediator.cs" />
      <Compile Include="Assets\scripts\strangerocks\game\view\ExplosionView.cs" />

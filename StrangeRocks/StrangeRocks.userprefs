@@ -1,11 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/strangerocks/ui/view/StartLevelMediator.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/strangerocks/game/controller/enemy/EnemySpawner.cs">
     <Files>
-      <File FileName="Assets/scripts/strangerocks/common/view/ButtonMouseMediator.cs" Line="1" Column="1" />
-      <File FileName="Assets/scripts/strangerocks/common/view/ButtonView.cs" Line="9" Column="12" />
-      <File FileName="Assets/scripts/strangerocks/ui/config/UIContext.cs" Line="54" Column="59" />
-      <File FileName="Assets/scripts/strangerocks/ui/view/StartLevelMediator.cs" Line="22" Column="54" />
+      <File FileName="Assets/scripts/strangerocks/game/controller/enemy/EnemySpawner.cs" Line="6" Column="39" />
+      <File FileName="Assets/scripts/strangerocks/game/controller/EndGameCommand.cs" Line="11" Column="1" />
+      <File FileName="Assets/scripts/strangerocks/game/controller/enemy/CreateEnemySpawnerCommand.cs" Line="20" Column="21" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
