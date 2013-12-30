@@ -7,8 +7,6 @@ namespace strange.examples.strangerocks.game
 {
 	public class GameModuleStartCommand : Command
 	{
-		[Inject (ContextKeys.CONTEXT_VIEW)]
-		public GameObject contextView{ get; set; }
 
 		[Inject]	//This injection simply instantiates the game input
 		public IInput input{ get; set; }
@@ -16,7 +14,7 @@ namespace strange.examples.strangerocks.game
 
 		public override void Execute ()
 		{
-			//contextView
+
 		}
 	}
 }

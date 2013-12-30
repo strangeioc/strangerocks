@@ -21,8 +21,6 @@ namespace strange.examples.strangerocks.game
 
 		public override void Execute ()
 		{
-			gameField.AddComponent<EnemySpawner> ();
-
 			createPlayerSignal.Dispatch ();
 
 			int rocks = gameModel.level + 2;
