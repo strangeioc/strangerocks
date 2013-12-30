@@ -34,6 +34,7 @@ namespace strange.examples.strangerocks.ui
 
 			SetScore (0);
 			SetLives (0);
+			SetLevel (0);
 		}
 
 		internal void SetScore(int value)

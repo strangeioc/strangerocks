@@ -47,6 +47,7 @@ namespace strange.examples.strangerocks.ui
 			//Mediation allows us to separate the View code from the rest of the app.
 			//The details of **why** mediation is a good thing can be read in the faq:
 			//http://thirdmotion.github.io/strangeioc/faq.html#why-mediator
+
 			mediationBinder.Bind<EndGamePanelView> ().To<EndGameMediator> ();
 			mediationBinder.Bind<HUDView> ().To<HUDMediator> ();
 			mediationBinder.Bind<IdlePanelView> ().To<IdlePanelMediator> ();
@@ -92,11 +93,18 @@ namespace strange.examples.strangerocks.ui
 			//Don't forget to call the base version...important stuff happens there!!!
 			base.postBindings ();
 
-			//Disable the AudioListener
 			if (Context.firstContext != this)
 			{
+				//Disable the AudioListener
 				AudioListener listener = (contextView as GameObject).GetComponentInChildren<AudioListener> ();
 				listener.enabled = false;
+
+				//Disable the light
+				Light[] lights = (contextView as GameObject).GetComponentsInChildren<Light> ();
+				foreach (Light light in lights)
+				{
+					light.enabled = false;
+				}
 			}
 		}
 	}
