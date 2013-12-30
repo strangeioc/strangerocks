@@ -19,7 +19,7 @@
 	<DebugType>full</DebugType>
 	<Optimize>false</Optimize>
 	<OutputPath>Temp\bin\Debug\</OutputPath>
-	<DefineConstants>DEBUG;TRACE;UNITY_ANDROID;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_AUDIO_FMOD;ENABLE_MONO;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_GENERICS;ENABLE_SUBSTANCE;INCLUDE_WP8SUPPORT;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;UNITY_ANDROID_API;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;UNITY_4_3_2;UNITY_4_3;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_OSX</DefineConstants>
+	<DefineConstants>DEBUG;TRACE;UNITY_STANDALONE_OSX;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_MONO;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_GENERICS;ENABLE_SUBSTANCE;INCLUDE_WP8SUPPORT;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_GAMECENTER;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;UNITY_4_3_2;UNITY_4_3;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_OSX</DefineConstants>
 	<ErrorReport>prompt</ErrorReport>
 	<WarningLevel>4</WarningLevel>
 	<NoWarn>0169</NoWarn>
@@ -160,7 +160,7 @@
      <Compile Include="Assets\scripts\strange\framework\impl\SemiBinding.cs" />
      <Compile Include="Assets\scripts\strangerocks\common\config\CommonSignal.cs" />
      <Compile Include="Assets\scripts\strangerocks\common\config\SignalContext.cs" />
-     <Compile Include="Assets\scripts\strangerocks\common\controller\EstablishGameCameraCommand.cs" />
+     <Compile Include="Assets\scripts\strangerocks\common\config\StrangeRocksElement.cs" />
      <Compile Include="Assets\scripts\strangerocks\common\controller\ResourceInstanceProvider.cs" />
      <Compile Include="Assets\scripts\strangerocks\common\util\IRoutineRunner.cs" />
      <Compile Include="Assets\scripts\strangerocks\common\util\IScreenUtil.cs" />
@@ -178,8 +178,8 @@
      <Compile Include="Assets\scripts\strangerocks\game\controller\GameModuleStartCommand.cs" />
      <Compile Include="Assets\scripts\strangerocks\game\controller\StartGameCommand.cs" />
      <Compile Include="Assets\scripts\strangerocks\game\controller\enemy\CreateEnemyCommand.cs" />
+     <Compile Include="Assets\scripts\strangerocks\game\controller\enemy\CreateEnemySpawnerCommand.cs" />
      <Compile Include="Assets\scripts\strangerocks\game\controller\enemy\DestroyEnemyCommand.cs" />
-     <Compile Include="Assets\scripts\strangerocks\game\controller\enemy\EnemySpawner.cs" />
      <Compile Include="Assets\scripts\strangerocks\game\controller\input\GameInputEvent.cs" />
      <Compile Include="Assets\scripts\strangerocks\game\controller\input\IInput.cs" />
      <Compile Include="Assets\scripts\strangerocks\game\controller\input\KeyboardInput.cs" />
@@ -201,6 +201,7 @@
      <Compile Include="Assets\scripts\strangerocks\game\view\EnemyMediator.cs" />
      <Compile Include="Assets\scripts\strangerocks\game\view\EnemyMissileMediator.cs" />
      <Compile Include="Assets\scripts\strangerocks\game\view\EnemyMissileView.cs" />
+     <Compile Include="Assets\scripts\strangerocks\game\view\EnemySpawner.cs" />
      <Compile Include="Assets\scripts\strangerocks\game\view\EnemyView.cs" />
      <Compile Include="Assets\scripts\strangerocks\game\view\ExplosionMediator.cs" />
      <Compile Include="Assets\scripts\strangerocks\game\view\ExplosionView.cs" />

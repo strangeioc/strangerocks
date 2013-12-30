@@ -1,13 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/strangerocks/game/config/GameContext.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/strangerocks/ui/view/StartLevelMediator.cs">
     <Files>
-      <File FileName="Assets/scripts/strangerocks/game/config/GameContext.cs" Line="26" Column="56" />
-      <File FileName="Assets/scripts/strangerocks/ui/config/UIContext.cs" Line="38" Column="56" />
-      <File FileName="Assets/scripts/strangerocks/main/config/MainContext.cs" Line="23" Column="75" />
-      <File FileName="Assets/scripts/strangerocks/ui/view/OnscreenControlsView.cs" Line="41" Column="16" />
-      <File FileName="Assets/scripts/strangerocks/ui/view/OnscreenControlsMediator.cs" Line="68" Column="5" />
-      <File FileName="Assets/scripts/strangerocks/game/view/ShipMediator.cs" Line="36" Column="4" />
+      <File FileName="Assets/scripts/strangerocks/common/view/ButtonMouseMediator.cs" Line="1" Column="1" />
+      <File FileName="Assets/scripts/strangerocks/common/view/ButtonView.cs" Line="9" Column="12" />
+      <File FileName="Assets/scripts/strangerocks/ui/config/UIContext.cs" Line="54" Column="59" />
+      <File FileName="Assets/scripts/strangerocks/ui/view/StartLevelMediator.cs" Line="22" Column="54" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
