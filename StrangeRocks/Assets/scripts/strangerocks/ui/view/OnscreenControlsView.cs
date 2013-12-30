@@ -1,4 +1,17 @@
-﻿using System;
+﻿//Note how this View mimics the behavior of the KeyboardInput class over in the game context.
+//This allows us to have onscreen controls when appropriate and keyboard controls when we'd rather
+//have that.
+
+//Note also that I'm using bitwise evaluation to handle the key input. If you're not familiar with
+//bitwise operations, I suggest you look it up. It's very useful for just this sort of scenario.
+//http://en.wikipedia.org/wiki/Bitwise_operation
+
+//In this case, I specifically use the following:
+// |= Add the value to the result
+// ^= Remove the value from the result
+// &  Test if the value appears in the result
+
+using System;
 using strange.extensions.mediation.impl;
 using UnityEngine;
 

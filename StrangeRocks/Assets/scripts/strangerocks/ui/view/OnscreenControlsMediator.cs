@@ -50,6 +50,7 @@ namespace strange.examples.strangerocks.ui
 			gameObject.SetActive (false);
 		}
 
+		//Every cycle dispatches the Signal with the current input value
 		public void Update()
 		{
 			int input = view.input;

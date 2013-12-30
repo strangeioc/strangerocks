@@ -1,4 +1,10 @@
-﻿using System;
+﻿//The panels are largely very simple.
+//The Mediators listen to and dispatch Signals.
+//Some signals set values on the Views.
+//The Views themselves expose themselves to the Mediators on one hand
+//And to the Unity Editor on the other.
+
+using System;
 using strange.extensions.mediation.impl;
 
 namespace strange.examples.strangerocks.ui
