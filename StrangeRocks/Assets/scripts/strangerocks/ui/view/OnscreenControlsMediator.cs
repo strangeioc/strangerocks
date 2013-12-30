@@ -29,7 +29,7 @@ namespace strange.examples.strangerocks.ui
 			levelStartSignal.AddListener (show);
 			gameEndSignal.AddListener (hide);
 
-			view.init ();
+			view.Init ();
 			hide ();
 		}
 

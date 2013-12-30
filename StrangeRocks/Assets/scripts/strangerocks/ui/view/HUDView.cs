@@ -25,7 +25,7 @@ namespace strange.examples.strangerocks.ui
 
 		private GameObject[] livesGOs;
 
-		internal void init()
+		internal void Init()
 		{
 			transform.localPosition = screenUtil.GetAnchorPosition (ScreenAnchor.CENTER_HORIZONTAL, ScreenAnchor.CENTER_VERTICAL);
 			scoreBlock.transform.localPosition = screenUtil.GetAnchorPosition (scoreHorizontalAnchor, scoreVerticalAnchor);

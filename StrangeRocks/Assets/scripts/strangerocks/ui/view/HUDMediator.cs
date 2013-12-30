@@ -23,7 +23,7 @@ namespace strange.examples.strangerocks.ui
 			updateLevelSignal.AddListener (onLevelUpdate);
 			updateLivesSignal.AddListener (onLivesUpdate);
 
-			view.init ();
+			view.Init ();
 		}
 
 		public override void OnRemove ()

@@ -17,7 +17,7 @@ namespace strange.examples.strangerocks.ui
 
 		internal Signal proceedSignal = new Signal ();
 
-		internal void init()
+		internal void Init()
 		{
 			startButton.releaseSignal.AddListener (onStartClick);
 

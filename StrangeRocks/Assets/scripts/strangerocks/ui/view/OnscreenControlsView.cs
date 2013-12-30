@@ -29,7 +29,7 @@ namespace strange.examples.strangerocks.ui
 
 		internal int input = 0;
 
-		internal void init()
+		internal void Init()
 		{
 			rotateLeftButton.pressSignal.AddListener (leftPress);
 			rotateLeftButton.releaseSignal.AddListener (leftRelease);

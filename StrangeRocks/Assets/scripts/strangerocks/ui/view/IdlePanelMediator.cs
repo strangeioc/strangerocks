@@ -16,7 +16,7 @@ namespace strange.examples.strangerocks.ui
 
 		public override void OnRegister ()
 		{
-			view.init ();
+			view.Init ();
 			view.proceedSignal.AddListener (onProceed);
 		}
 

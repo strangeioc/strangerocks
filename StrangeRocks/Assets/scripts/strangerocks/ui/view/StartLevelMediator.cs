@@ -28,7 +28,7 @@ namespace strange.examples.strangerocks.ui
 			gameStartSignal.AddListener (show);
 			updateLevelSignal.AddListener (onLevelUpdate);
 
-			view.init ();
+			view.Init ();
 			hide ();
 		}
 

@@ -30,7 +30,7 @@ namespace strange.examples.strangerocks.ui
 			gameEndSignal.AddListener (show);
 			updateScoreSignal.AddListener (onScoreUpdate);
 
-			view.init ();
+			view.Init ();
 			hide ();
 		}
 

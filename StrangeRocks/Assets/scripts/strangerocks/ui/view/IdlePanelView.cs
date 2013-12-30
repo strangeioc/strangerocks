@@ -17,7 +17,7 @@ namespace strange.examples.strangerocks.ui
 		public ScreenAnchor horizontalAnchor = ScreenAnchor.CENTER_HORIZONTAL;
 		public ScreenAnchor verticalAnchor = ScreenAnchor.CENTER_VERTICAL;
 
-		internal void init()
+		internal void Init()
 		{
 			startButton.releaseSignal.AddListener (onStartClick);
 
