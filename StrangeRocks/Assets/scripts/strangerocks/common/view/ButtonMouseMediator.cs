@@ -1,4 +1,4 @@
-﻿//Mediates the ButtonView in Editor/Desktop/Web...wherever clicks are appropriate
+﻿//Mediates the ButtonView in Editor/Desktop/Web...wherever mouse clicks are appropriate
 
 using System;
 using strange.extensions.mediation.impl;
@@ -10,7 +10,7 @@ namespace strange.examples.strangerocks.ui
 		[Inject]
 		public ButtonView view { get; set; }
 
-		#if UNITY_EDITOR
+		#if UNITY_EDITOR || UNITY_STANDALONE || UNITY_WEBPLAYER
 
 		protected void OnMouseDown()
 		{
