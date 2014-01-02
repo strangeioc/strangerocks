@@ -18,6 +18,7 @@ using strange.extensions.injector.api;
 
 namespace strange.examples.strangerocks
 {
+	//An implicit binding. We map this binding as Cross-Context by default.
 	[Implements(typeof(IRoutineRunner), InjectionBindingScope.CROSS_CONTEXT)]
 	public class RoutineRunner : IRoutineRunner
 	{
