@@ -17,7 +17,7 @@ namespace strange.examples.strangerocks
 		CENTER_HORIZONTAL,
 	}
 
-	//OUR ONE EXAMPLE OF IMPLICIT BINDINGS
+	//AN EXAMPLE OF IMPLICIT BINDINGS
 	//You'll note that there is no binding of IScreenUtil to ScreenUtil in any of the Contexts.
 	//It's handled automatically here.
 	[Implements(typeof(IScreenUtil), InjectionBindingScope.SINGLE_CONTEXT)]
