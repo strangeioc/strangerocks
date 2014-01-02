@@ -16,11 +16,13 @@ namespace strange.examples.strangerocks.main
 		[Inject(ContextKeys.CONTEXT_VIEW)]
 		public GameObject contextView { get; set; }
 
+		[Inject]
+		public IApplication application { get; set; }
 
 		override public void Execute ()
 		{
-			Application.LoadLevelAdditive ("ui");
-			Application.LoadLevelAdditive ("game");
+			application.LoadLevelAdditive ("ui");
+			application.LoadLevelAdditive ("game");
 		}
 	}
 }

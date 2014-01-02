@@ -64,8 +64,6 @@ namespace strange.examples.strangerocks.game
 			injectionBinder.Bind<IPool<GameObject>>().To<Pool<GameObject>>().ToSingleton().ToName(GameElement.MISSILE_POOL);
 			injectionBinder.Bind<IPool<GameObject>>().To<Pool<GameObject>>().ToSingleton().ToName(GameElement.ROCK_POOL);
 
-
-
 			//Signals (not bound to Commands)
 			//When a Signal isn't bound to a Command, it needs to be mapped, just like any other injected instance
 			injectionBinder.Bind<GameStartedSignal> ().ToSingleton ();
@@ -79,9 +77,6 @@ namespace strange.examples.strangerocks.game
 				injectionBinder.Bind<UpdateLivesSignal> ().ToSingleton ();
 				injectionBinder.Bind<UpdateScoreSignal> ().ToSingleton ();
 			}
-
-
-
 
 			//Commands
 			//All Commands get mapped to a Signal that Executes them.
