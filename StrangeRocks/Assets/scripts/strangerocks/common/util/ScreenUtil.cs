@@ -19,8 +19,9 @@ namespace strange.examples.strangerocks
 
 	//AN EXAMPLE OF IMPLICIT BINDINGS
 	//You'll note that there is no binding of IScreenUtil to ScreenUtil in any of the Contexts.
-	//It's handled automatically here.
-	[Implements(typeof(IScreenUtil), InjectionBindingScope.SINGLE_CONTEXT)]
+	//It's handled automatically here. By default, implicit bindings are single-Context. See
+	//RoutineRunner for an example of a Cross-Context implicit binding.
+	[Implements(typeof(IScreenUtil))]
 	public class ScreenUtil : IScreenUtil
 	{
 		//The camera in use by the Context
