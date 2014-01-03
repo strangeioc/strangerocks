@@ -19,7 +19,7 @@
 	<DebugType>full</DebugType>
 	<Optimize>false</Optimize>
 	<OutputPath>Temp\bin\Debug\</OutputPath>
-	<DefineConstants>DEBUG;TRACE;UNITY_STANDALONE_OSX;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_MONO;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_GENERICS;ENABLE_SUBSTANCE;INCLUDE_WP8SUPPORT;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_GAMECENTER;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;UNITY_4_3_2;UNITY_4_3;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_OSX</DefineConstants>
+	<DefineConstants>DEBUG;TRACE;UNITY_WEBPLAYER;WEBPLUG;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_AUDIO_FMOD;ENABLE_MONO;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_GENERICS;ENABLE_SUBSTANCE;INCLUDE_WP8SUPPORT;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;UNITY_4_3_2;UNITY_4_3;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_OSX</DefineConstants>
 	<ErrorReport>prompt</ErrorReport>
 	<WarningLevel>4</WarningLevel>
 	<NoWarn>0169</NoWarn>
@@ -198,7 +198,9 @@
      <Compile Include="Assets\scripts\strangerocks\game\controller\player\DestroyPlayerCommand.cs" />
      <Compile Include="Assets\scripts\strangerocks\game\controller\rock\CreateRockCommand.cs" />
      <Compile Include="Assets\scripts\strangerocks\game\controller\rock\DestroyRockCommand.cs" />
+     <Compile Include="Assets\scripts\strangerocks\game\model\GameConfig.cs" />
      <Compile Include="Assets\scripts\strangerocks\game\model\GameModel.cs" />
+     <Compile Include="Assets\scripts\strangerocks\game\model\IGameConfig.cs" />
      <Compile Include="Assets\scripts\strangerocks\game\model\IGameModel.cs" />
      <Compile Include="Assets\scripts\strangerocks\game\view\EnemyMediator.cs" />
      <Compile Include="Assets\scripts\strangerocks\game\view\EnemyMissileMediator.cs" />
@@ -232,6 +234,7 @@
      <Compile Include="Assets\scripts\strangerocks\ui\view\OnscreenControlsView.cs" />
      <Compile Include="Assets\scripts\strangerocks\ui\view\StartLevelMediator.cs" />
      <Compile Include="Assets\scripts\strangerocks\ui\view\StartLevelPanelView.cs" />
+     <Compile Include="Assets\scripts\thirdparty\SimpleJSON.cs" />
      <None Include="Assets\scripts\strange\extensions\ReadMe.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
