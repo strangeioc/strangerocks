@@ -1,0 +1,14 @@
+{
+	"initLives": 3,
+	"newLifeEvery":1000,
+	"maxLives":9,
+	"initRocks":3,
+	"additionalRocksPerLevel":2,
+	"baseRockScore":10,
+	"rockExplosiveForceMin":800,
+	"rockExplosiveForceMax":1000,
+	"rockExplosiveForceRadius":100,	
+	"enemySpawnSecondsMin":1,
+	"enemySpawnSecondsMax":3,
+	"baseEnemyScore":100
+}
