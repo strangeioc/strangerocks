@@ -51,6 +51,7 @@ namespace strange.examples.strangerocks.game
 			}
 				
 			injectionBinder.Bind<ISpawner> ().To<EnemySpawner>().ToSingleton ();
+			injectionBinder.Bind<IGameConfig> ().To<GameConfig>().ToSingleton ();
 
 			//Pools
 			//Pools provide a recycling system that makes the game much more efficient. Instead of destroying instances

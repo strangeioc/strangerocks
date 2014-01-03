@@ -21,11 +21,14 @@ namespace strange.examples.strangerocks.game
 		[Inject]
 		public CreateRockSignal createRockSignal{ get; set; }
 
+		[Inject]
+		public IGameConfig gameConfig{ get; set; }
+
 		public override void Execute ()
 		{
 			createPlayerSignal.Dispatch ();
 
-			int rocks = gameModel.level + 2;
+			int rocks = ((gameModel.level - 1) * gameConfig.additionalRocksPerLevel) + gameConfig.initRocks;
 			for (int a = 0; a < rocks; a++)
 			{
 				float theta = UnityEngine.Random.Range (0, Mathf.PI * 2);

@@ -16,14 +16,14 @@ namespace strange.examples.strangerocks.game
 		{
 			score = 0;
 			level = 1;
-			lives = maxLives;
+			lives = initLives;
 		}
 
 		public int score { get; set; }
 
 		public int lives { get; set; }
 
-		public int maxLives { get; set; }
+		public int initLives { get; set; }
 
 		public int level { get; set; }
 

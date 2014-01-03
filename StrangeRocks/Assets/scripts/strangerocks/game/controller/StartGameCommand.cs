@@ -23,10 +23,13 @@ namespace strange.examples.strangerocks.game
 		[Inject]
 		public IGameModel gameModel{ get; set; }
 
+		[Inject]
+		public IGameConfig gameConfig{ get; set; }
+
 		public override void Execute ()
 		{
 			//Set the max lives and zero out the gameModel
-			gameModel.maxLives = 3;
+			gameModel.initLives = gameConfig.initLives;
 			gameModel.Reset ();
 
 			//Update all the model values

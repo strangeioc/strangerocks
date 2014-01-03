@@ -13,7 +13,7 @@ namespace strange.examples.strangerocks.game
 
 		int lives{ get; set; }
 
-		int maxLives{ get; set; }
+		int initLives{ get; set; }
 
 		int level{ get; set; }
 

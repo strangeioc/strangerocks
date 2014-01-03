@@ -25,11 +25,24 @@ namespace strange.examples.strangerocks.game
 		[Inject]
 		public IRoutineRunner routineRunner{ get; set; }
 
+		[Inject]
+		public IGameConfig gameConfig{ get; set; }
+
 		//Arguably these should be in a gameConfig somewhere
 		private float minSpawnSeconds = 2f;
 		private float maxSpawnSeconds = 5f;
 
 		private bool running = false;
+
+		//PostConstruct methods fire automatically after Construction
+		//and after all injections are satisfied. It's a safe place
+		//to do things you'd usually sonsider doing in the Constructor.
+		[PostConstruct]
+		public void PostConstruct()
+		{
+			minSpawnSeconds = gameConfig.enemySpawnSecondsMin;
+			maxSpawnSeconds = gameConfig.enemySpawnSecondsMax;
+		}
 
 		public void Start ()
 		{

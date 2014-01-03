@@ -63,6 +63,9 @@ namespace strange.examples.strangerocks.game
 		[Inject]
 		public LevelEndSignal levelEndSignal{ get; set; }
 
+		[Inject]
+		public IGameConfig gameConfig{ get; set; }
+
 		private static Vector3 PARKED_POS = new Vector3(1000f, 0f, 1000f);
 
 		public override void Execute ()
@@ -74,7 +77,7 @@ namespace strange.examples.strangerocks.game
 				//You'd do yourself a favor by centralizing the tabulation of scores.
 				int level = rockView.level;
 
-				gameModel.score += 10 * level;
+				gameModel.score += gameConfig.baseRockScore * level;
 				updateScoreSignal.Dispatch (gameModel.score);
 
 				if (level < 3)

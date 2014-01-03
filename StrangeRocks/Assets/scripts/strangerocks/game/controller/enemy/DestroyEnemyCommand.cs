@@ -35,6 +35,9 @@ namespace strange.examples.strangerocks.game
 		
 		[Inject]
 		public UpdateScoreSignal updateScoreSignal{ get; set; }
+
+		[Inject]
+		public IGameConfig gameConfig{ get; set; }
 		
 		//An offscreen location to place the recycled Enemies.
 		//Arguably this value should be in a config somewhere.
@@ -50,7 +53,7 @@ namespace strange.examples.strangerocks.game
 				//NOTE: arguably all the point-earning from destroying Rocks and Enemies
 				//should be offloaded to a set of ScoreCommands. Certainly in a more complex game,
 				//You'd do yourself a favor by centralizing the tabulation of scores.
-				gameModel.score += 100 * level;
+				gameModel.score += gameConfig.baseEnemyScore * level;
 				updateScoreSignal.Dispatch (gameModel.score);
 			}
 
