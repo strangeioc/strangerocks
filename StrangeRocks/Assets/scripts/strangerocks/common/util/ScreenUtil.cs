@@ -40,8 +40,8 @@ namespace strange.examples.strangerocks
 				height * screenHeight);
 		}
 
-		//Not actually used. A method for determining is a gameObject is visible to the camera.
-		//I ended up just using renderer.isVisible
+		//A method for determining if a gameObject is visible to the camera.
+		//I started using renderer.isVisible...but that failed to function correctly in at least one case.
 		public bool IsInCamera(GameObject go)
 		{
 			Plane[] planes = GeometryUtility.CalculateFrustumPlanes (gameCamera);

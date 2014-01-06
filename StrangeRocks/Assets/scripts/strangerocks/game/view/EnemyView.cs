@@ -10,6 +10,10 @@ namespace strange.examples.strangerocks.game
 {
 	public class EnemyView : View
 	{
+		[Inject]
+		public IScreenUtil screenUtil{ get; set; }
+
+
 		//These Signals inform the Mediator that certain events have occurred
 		internal Signal exitScreenSignal = new Signal ();
 		internal Signal fireWeaponSignal = new Signal ();
@@ -55,7 +59,7 @@ namespace strange.examples.strangerocks.game
 			mainRenderer.transform.Rotate (motiveForce * rotationSpeed);
 
 			//Have we flown offscreen?
-			if (gameObject.activeSelf && !mainRenderer.isVisible)
+			if (gameObject.activeSelf && !screenUtil.IsInCamera(mainRenderer.gameObject))
 			{
 				StopAllCoroutines ();
 				exitScreenSignal.Dispatch ();

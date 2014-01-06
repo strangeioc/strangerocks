@@ -73,8 +73,9 @@ namespace strange.examples.strangerocks.game
 				thrustParticles.startLifetime = .1f;
 			}
 
-			if (!mainRenderer.isVisible)
+			if (!screenUtil.IsInCamera(mainRenderer.gameObject))
 			{
+				Debug.Log ("offscreen");
 				screenUtil.TranslateToFarSide (gameObject);
 			}
 		}

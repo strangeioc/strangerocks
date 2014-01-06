@@ -31,7 +31,7 @@ namespace strange.examples.strangerocks.game
 			//Some spin for visual fun
 			rigidbody.AddRelativeTorque (Vector3.up * rotationSpeed);
 
-			if (!mainRenderer.isVisible)
+			if (!!screenUtil.IsInCamera(mainRenderer.gameObject))
 			{
 				//Rock flew offscreen. Translate it to the far side.
 				screenUtil.TranslateToFarSide (gameObject);

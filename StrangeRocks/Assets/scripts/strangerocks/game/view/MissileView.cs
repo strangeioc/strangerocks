@@ -9,6 +9,9 @@ namespace strange.examples.strangerocks.game
 {
 	public class MissileView : View
 	{
+		[Inject]
+		public IScreenUtil screenUtil{ get; set; }
+
 		internal Signal<GameObject> contactSignal = new Signal<GameObject> ();
 		internal Signal exitScreenSignal = new Signal ();
 
@@ -21,7 +24,7 @@ namespace strange.examples.strangerocks.game
 
 		void FixedUpdate()
 		{
-			if (gameObject.activeSelf && !mainRenderer.isVisible)
+			if (gameObject.activeSelf && !screenUtil.IsInCamera(mainRenderer.gameObject))
 			{
 				//Missile flew offscreen
 				exitScreenSignal.Dispatch ();
