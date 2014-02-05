@@ -53,12 +53,16 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 		protected HashSet<ITriggerable> triggerClientRemovals;
 		protected bool isTriggeringClients;
 
-		protected IPool<TmEvent> eventPool;
+		/// The eventPool is shared across all EventDispatchers for efficiency
+		public static IPool<TmEvent> eventPool;
 
 		public EventDispatcher ()
 		{
-			eventPool = new Pool<TmEvent> ();
-			eventPool.instanceProvider = new EventInstanceProvider ();
+			if (eventPool == null)
+			{
+				eventPool = new Pool<TmEvent> ();
+				eventPool.instanceProvider = new EventInstanceProvider ();
+			}
 		}
 
 		override public IBinding GetRawBinding()
@@ -81,6 +85,11 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 			//Scrub the data to make eventType and data conform if possible
 			IEvent evt = conformDataToEvent (eventType, data);
 
+			if (evt is IPoolable)
+			{
+				(evt as IPoolable).Retain ();
+			}
+
 			bool continueDispatch = true;
 			if (triggerClients != null)
 			{
@@ -101,17 +110,24 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 			}
 
 			if (!continueDispatch)
+			{
+				internalReleaseEvent (evt);
 				return;
+			}
 
 			IEventBinding binding = GetBinding (eventType) as IEventBinding;
 			if (binding == null)
 			{
+				internalReleaseEvent (evt);
 				return;
 			}
 
 			object[] callbacks = (binding.value as object[]).Clone() as object[];
 			if (callbacks == null)
+			{
+				internalReleaseEvent (evt);
 				return;
+			}
 			for(int a = 0; a < callbacks.Length; a++)
 			{
 				object callback = callbacks[a];
@@ -134,10 +150,7 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 				}
 			}
 
-			if (System.Object.ReferenceEquals(evt.target, this))
-			{
-				eventPool.ReturnInstance (evt);
-			}
+			internalReleaseEvent (evt);
 		}
 
 		virtual protected IEvent conformDataToEvent(object eventType, object data)
@@ -341,6 +354,30 @@ namespace strange.extensions.dispatcher.eventdispatcher.impl
 			if (allow)
 				Dispatch(key, data);
 			return true;
+		}
+
+		protected void internalReleaseEvent(IEvent evt)
+		{
+			if (evt is IPoolable)
+			{
+				(evt as IPoolable).Release ();
+			}
+		}
+
+		public void ReleaseEvent(IEvent evt)
+		{
+			if ((evt as IPoolable).retain == false)
+			{
+				cleanEvent (evt);
+				eventPool.ReturnInstance (evt);
+			}
+		}
+
+		protected void cleanEvent(IEvent evt)
+		{
+			evt.target = null;
+			evt.data = null;
+			evt.type = null;
 		}
 	}
 

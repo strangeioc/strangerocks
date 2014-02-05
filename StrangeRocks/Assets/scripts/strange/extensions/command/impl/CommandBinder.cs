@@ -59,6 +59,7 @@ using strange.extensions.injector.api;
 using strange.extensions.pool.impl;
 using strange.framework.api;
 using strange.framework.impl;
+using strange.extensions.pool.api;
 
 namespace strange.extensions.command.impl
 {
@@ -92,6 +93,10 @@ namespace strange.extensions.command.impl
 		
 		virtual public void ReactTo(object trigger, object data)
 		{
+			if (data is IPoolable)
+			{
+				(data as IPoolable).Retain ();
+			}
 			ICommandBinding binding = GetBinding (trigger) as ICommandBinding;
 			if (binding != null)
 			{
@@ -111,7 +116,7 @@ namespace strange.extensions.command.impl
 			}
 		}
 
-		private void next(ICommandBinding binding, object data, int depth)
+		protected void next(ICommandBinding binding, object data, int depth)
 		{
 			object[] values = binding.value as object[];
 			if (depth < values.Length)
@@ -122,11 +127,18 @@ namespace strange.extensions.command.impl
 			}
 			else
 			{
+				disposeOfSequencedData (data);
 				if (binding.isOneOff)
 				{
 					Unbind (binding);
 				}
 			}
+		}
+
+		//EventCommandBinder (and perhaps other sub-classes) use this method to dispose of the data in sequenced commands
+		virtual protected void disposeOfSequencedData(object data)
+		{
+			//No-op. Override if necessary.
 		}
 
 		virtual protected ICommand invokeCommand(Type cmd, ICommandBinding binding, object data, int depth)
@@ -226,7 +238,7 @@ namespace strange.extensions.command.impl
 			}
 		}
 
-		public void ReleaseCommand (ICommand command)
+		public virtual void ReleaseCommand (ICommand command)
 		{
 			if (command.retain == false)
 			{

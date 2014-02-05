@@ -347,6 +347,16 @@ namespace strange.unittests
 		{
 			someValue = 0;
 		}
+
+		public void Retain()
+		{
+		}
+
+		public void Release()
+		{
+		}
+
+		public bool retain { get; set; }
 	}
 
 	class TestInstanceProvider : IInstanceProvider
@@ -361,23 +371,6 @@ namespace strange.unittests
 		public object GetInstance(Type key)
 		{
 			return Activator.CreateInstance (key);
-		}
-	}
-
-	class ShipInstanceProvider : IInstanceProvider
-	{
-		public T GetInstance<T>()
-		{
-			object instance = GetInstance (typeof (T));
-			T retv = (T) instance;
-			return retv;
-		}
-
-		public object GetInstance(Type key)
-		{
-			object retv = Activator.CreateInstance (key);
-			(retv as PooledInstance).someValue = 100;
-			return retv;
 		}
 	}
 }

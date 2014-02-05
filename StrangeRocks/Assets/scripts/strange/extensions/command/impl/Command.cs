@@ -59,8 +59,6 @@ namespace strange.extensions.command.impl
 
 		public int sequenceId{ get; set; }
 
-		protected bool _retained = false;
-
 		public Command ()
 		{
 			//Set to false on construction to ensure that it's not double-injected on first use.
@@ -74,14 +72,14 @@ namespace strange.extensions.command.impl
 			throw new CommandException ("You must override the Execute method in every Command", CommandExceptionType.EXECUTE_OVERRIDE);
 		}
 
-		public void Retain()
+		public virtual void Retain()
 		{
-			_retained = true;
+			retain = true;
 		}
 
-		public void Release()
+		public virtual void Release()
 		{
-			_retained = false;
+			retain = false;
 			if (commandBinder != null)
 			{
 				commandBinder.ReleaseCommand (this);
@@ -108,13 +106,7 @@ namespace strange.extensions.command.impl
 			cancelled = true;
 		}
 
-		public bool retain
-		{
-			get
-			{
-				return _retained;
-			}
-		}
+		public bool retain { get; set; }
 	}
 }
 

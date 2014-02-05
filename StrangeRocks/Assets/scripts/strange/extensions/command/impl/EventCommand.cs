@@ -27,6 +27,7 @@ using System;
 using strange.extensions.context.api;
 using strange.extensions.dispatcher.eventdispatcher.api;
 using strange.extensions.command.impl;
+using strange.extensions.pool.api;
 
 namespace strange.extensions.command.impl
 {
@@ -37,6 +38,16 @@ namespace strange.extensions.command.impl
 
 		[Inject]
 		public IEvent evt{ get; set;}
+
+		public override void Retain ()
+		{
+			base.Retain ();
+		}
+
+		public override void Release ()
+		{
+			base.Release ();
+		}
 	}
 }
 

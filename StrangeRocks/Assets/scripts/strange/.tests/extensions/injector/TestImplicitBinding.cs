@@ -12,6 +12,8 @@ using strange.unittests.annotated.testImplements;
 using strange.unittests.annotated.testConcrete;
 using strange.unittests.annotated.testCrossContextInterface;
 using strange.unittests.annotated.testImplTwo;
+using strange.unittests.testimplicitbindingnamespace;
+using System.Collections.Generic;
 
 namespace strange.unittests
 {
@@ -272,6 +274,94 @@ namespace strange.unittests
 			Assert.AreEqual(2, parentModel.Value); //cross context model is changed
 		}
 
+		//This monster "unit" test confirms that implicit bindings
+		//correctly maintain integrity across Context boundaries.
+		[Test]
+		public void TestMultipleCrossContextImplicitBindings()
+		{
+			TestImplicitBindingClass.instantiationCount = 0;
+
+			int contextsBeforeInstancing = 3;
+			int contextsAfterInstancing = 4;
+			int contextsToCreate = contextsBeforeInstancing + contextsAfterInstancing;
+			int getInstanceCallsPerContext = 3;
+			int injectsPerContext = 3;
+			List<Context> contexts = new List<Context>();
+			IInjectionBinding bindingBeforeContextCreation = null;
+			object bindingValueBeforeContextCreation = null;
+
+			//We create several Contexts.
+			//note contextNumber is 1-based
+			for (int contextNumber = 1; contextNumber <= contextsToCreate; contextNumber++)
+			{
+				//The first batch of Contexts don't actually create instances, just the implicit bindings
+				bool toInstance = (contextNumber > contextsBeforeInstancing);
+				//Specifically call out the Context that is first to create actual instances
+				bool isFirstContextToCallGetInstance = (contextNumber == (contextsBeforeInstancing + 1));
+
+				//Create each "ContextView" and its Context
+				object mockGameObject = new object ();
+				TestImplicitBindingContext context = new TestImplicitBindingContext (mockGameObject);
+				contexts.Add (context);
+
+				//For each Context, check that the TestImplicitBindingClass BINDING exists (no instance created yet)
+				IInjectionBinding bindingAfterContextCreation = context.injectionBinder.GetBinding<TestImplicitBindingClass> ();
+				object bindingValueAfterContextCreation = bindingAfterContextCreation.value;
+				
+				bool bindingChangedDueToContextCreation = bindingAfterContextCreation != bindingBeforeContextCreation;
+				bool bindingValueChangedDueToContextCreation = bindingValueAfterContextCreation != bindingValueBeforeContextCreation;
+
+				//due to the weak binding replacement rules, the binding should change every time we scan until we instance
+				Assert.IsFalse (bindingChangedDueToContextCreation && toInstance && !isFirstContextToCallGetInstance);
+
+				//after creating a new context, the value of the binding should only change on the first context
+				//(it was null before that)
+				Assert.IsFalse (bindingValueChangedDueToContextCreation && contextNumber != 1);
+
+				if (toInstance)
+				{
+					//For the Contexts that actually create instances...
+					for (int a = 0; a < getInstanceCallsPerContext; a++)
+					{
+						//...create some instances (well, duh) of the TestImplicitBindingClass...
+						TestImplicitBindingClass instance = context.injectionBinder.GetInstance<TestImplicitBindingClass> ();
+						Assert.IsNotNull (instance);
+					}
+
+					for (int b = 0; b < injectsPerContext; b++)
+					{
+						//...and some instances of the class that gets injected with TestImplicitBindingClass.
+						TestImplicitBindingInjectionReceiver instance = context.injectionBinder.GetInstance<TestImplicitBindingInjectionReceiver> ();
+						Assert.IsNotNull (instance);
+						Assert.IsNotNull (instance.testImplicitBindingClass);
+					}
+				}
+
+				//We inspect the binding and its value after all this mapping/instantiation
+				IInjectionBinding bindingAfterGetInstanceCalls = context.injectionBinder.GetBinding<TestImplicitBindingClass> ();
+				object bindingValueAfterGetInstanceCalls = bindingAfterGetInstanceCalls.value;
+				
+				bool bindingChangedDueToGetInstanceCalls = bindingAfterGetInstanceCalls != bindingAfterContextCreation;
+				bool bindingValueChangedDueToGetInstanceCalls = bindingValueAfterGetInstanceCalls != bindingValueAfterContextCreation;
+
+				//the binding itself should only change during the scan
+				Assert.IsFalse (bindingChangedDueToGetInstanceCalls);
+
+				//if the weak binding replacement rules are working, the only time the value should
+				//change is the first time we call GetInstance
+				Assert.IsFalse (bindingValueChangedDueToGetInstanceCalls && !isFirstContextToCallGetInstance);
+
+				//reset values for the next pass
+				bindingBeforeContextCreation = bindingAfterGetInstanceCalls;
+				bindingValueBeforeContextCreation = bindingValueAfterGetInstanceCalls;
+			}
+
+			//This is a Cross-Context Singleton.
+			//The primary purpose of this test is to ensure (that under the circumstances of this test),
+			//TestImplicitBindingClass should only get instantiated once
+			Assert.AreEqual (1, TestImplicitBindingClass.instantiationCount);
+		}
+
 		/// <summary>
 		/// Test that our assumptions regarding namespace scoping are correct 
 		/// (e.g. company.project.feature will include company.project.feature.signal)
@@ -432,4 +522,34 @@ namespace strange.unittests.annotated.multipleInterfaces
 		
 	}
 	
+}
+
+namespace strange.unittests.testimplicitbindingnamespace
+{
+	public class TestImplicitBindingContext : MockContext 
+	{
+		public TestImplicitBindingContext(object contextView) : base(contextView){}
+		protected override void mapBindings()
+		{
+			implicitBinder.ScanForAnnotatedClasses(new string[]{"strange.unittests.testimplicitbindingnamespace"});
+			injectionBinder.Bind<TestImplicitBindingInjectionReceiver>().ToSingleton();
+		}
+	}
+
+
+	public class TestImplicitBindingInjectionReceiver
+	{
+		[Inject]
+		public TestImplicitBindingClass testImplicitBindingClass{get;set;}
+	}
+
+	[Implements(InjectionBindingScope.CROSS_CONTEXT)]
+	public class TestImplicitBindingClass
+	{
+		public static int instantiationCount = 0;
+		public TestImplicitBindingClass()
+		{
+			++instantiationCount;
+		}
+	}
 }
