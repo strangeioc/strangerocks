@@ -5,11 +5,11 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{2A67E043-8D52-4BCF-8CF3-0E326C137D1E}</ProjectGuid>
+	<ProjectGuid>{BBE61660-40C9-3CB7-7FA3-FC56C3DC0B83}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
-	<AssemblyName>Assembly-CSharp-Editor</AssemblyName>
+	<AssemblyName>Assembly-UnityScript-Editor</AssemblyName>
 	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
 	<FileAlignment>512</FileAlignment>
 	<BaseDirectory>Assets</BaseDirectory>
@@ -46,38 +46,12 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Editor\tests\TestLevelEndCommand.cs" />
-     <Compile Include="Assets\UnityTestTools\Assertions\Editor\AssertionComponentEditor.cs" />
-     <Compile Include="Assets\UnityTestTools\Assertions\Editor\AssertionExplorerWindow.cs" />
-     <Compile Include="Assets\UnityTestTools\Assertions\Editor\AssertionListRenderer.cs" />
-     <Compile Include="Assets\UnityTestTools\Assertions\Editor\DropDownControl.cs" />
-     <Compile Include="Assets\UnityTestTools\Assertions\Editor\GroupByComparerRenderer.cs" />
-     <Compile Include="Assets\UnityTestTools\Assertions\Editor\GroupByExecutionMethodRenderer.cs" />
-     <Compile Include="Assets\UnityTestTools\Assertions\Editor\GroupByGORenderer.cs" />
-     <Compile Include="Assets\UnityTestTools\Assertions\Editor\GroupByNothingRenderer.cs" />
-     <Compile Include="Assets\UnityTestTools\Assertions\Editor\GroupByTestsRenderer.cs" />
-     <Compile Include="Assets\UnityTestTools\Assertions\Editor\PropertyPathSelector.cs" />
-     <Compile Include="Assets\UnityTestTools\Examples\AngryBotsTests\Scripts\Editor\CleanProject.cs" />
-     <Compile Include="Assets\UnityTestTools\Examples\Editor\NSubstituteDemo.cs" />
-     <Compile Include="Assets\UnityTestTools\Examples\Editor\SampleTests.cs" />
-     <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\Editor\BatchTestRunner.cs" />
-     <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\Editor\IntegrationTestRunnerRenderer.cs" />
-     <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\Editor\IntegrationTestsRunnerWindow.cs" />
-     <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\Editor\TestComponentEditor.cs" />
-     <Compile Include="Assets\UnityTestTools\IntegrationTestsFramework\TestRunner\Editor\TestManager.cs" />
-     <Compile Include="Assets\UnityTestTools\UnitTesting\Editor\TestRunner\GroupedByHierarchyRenderer.cs" />
-     <Compile Include="Assets\UnityTestTools\UnitTesting\Editor\TestRunner\GuiHelper.cs" />
-     <Compile Include="Assets\UnityTestTools\UnitTesting\Editor\TestRunner\ITestRunnerCallback.cs" />
-     <Compile Include="Assets\UnityTestTools\UnitTesting\Editor\TestRunner\IUnitTestEngine.cs" />
-     <Compile Include="Assets\UnityTestTools\UnitTesting\Editor\TestRunner\NUnitExtensions.cs" />
-     <Compile Include="Assets\UnityTestTools\UnitTesting\Editor\TestRunner\NUnitTestEngine.cs" />
-     <Compile Include="Assets\UnityTestTools\UnitTesting\Editor\TestRunner\ResultWriter\ResultSummarizer.cs" />
-     <Compile Include="Assets\UnityTestTools\UnitTesting\Editor\TestRunner\ResultWriter\StackTraceFilter.cs" />
-     <Compile Include="Assets\UnityTestTools\UnitTesting\Editor\TestRunner\ResultWriter\XmlResultWriter.cs" />
-     <Compile Include="Assets\UnityTestTools\UnitTesting\Editor\TestRunner\TestRunnerCallbackList.cs" />
-     <Compile Include="Assets\UnityTestTools\UnitTesting\Editor\TestRunner\UnitTestInfo.cs" />
-     <Compile Include="Assets\UnityTestTools\UnitTesting\Editor\TestRunner\UnitTestResult.cs" />
-     <Compile Include="Assets\UnityTestTools\UnitTesting\Editor\TestRunner\UnitTestView.cs" />
+     <Compile Include="Assets\UnityTestTools\Examples\AngryBotsTests\Scripts\Editor\PatrolPointEditor.js" />
+     <Compile Include="Assets\UnityTestTools\Examples\AngryBotsTests\Scripts\Editor\PatrolRouteConnector.js" />
+     <Compile Include="Assets\UnityTestTools\Examples\AngryBotsTests\Scripts\Editor\PatrolRouteEditor.js" />
+     <Compile Include="Assets\UnityTestTools\Examples\AngryBotsTests\Scripts\Editor\ReplacePrefabInstances.js" />
+     <Compile Include="Assets\UnityTestTools\Examples\AngryBotsTests\Scripts\Editor\SampleAnimationOnSelected.js" />
+     <Compile Include="Assets\UnityTestTools\Examples\AngryBotsTests\Scripts\Editor\UseOnlyUnlitShaders.js" />
      <None Include="Assets\UnityTestTools\Examples\AngryBotsTests\Shaders\Fx\Cursor.shader" />
      <None Include="Assets\UnityTestTools\Examples\AngryBotsTests\Shaders\Fx\ParticleAdditiveBlend.shader" />
      <None Include="Assets\UnityTestTools\Examples\AngryBotsTests\Shaders\Fx\Additive.shader" />
