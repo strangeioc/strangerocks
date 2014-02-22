@@ -21,6 +21,8 @@ namespace strange.examples.strangerocks.main
 			{
 				injectionBinder.Bind<IGameModel> ().To<GameModel> ().ToSingleton().CrossContext();
 
+				injectionBinder.Bind<IApplication> ().To<ApplicationWrapper>().ToSingleton ();
+
 				injectionBinder.Bind<GameStartSignal> ().ToSingleton ().CrossContext();
 				injectionBinder.Bind<GameInputSignal> ().ToSingleton ().CrossContext();
 				injectionBinder.Bind<GameEndSignal> ().ToSingleton ().CrossContext();
