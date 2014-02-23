@@ -1,2 +1,49 @@
-StrangeRocks/Library/metadata
-StrangeRocks/Temp
+# =============== #
+# Unity generated #
+# =============== #
+Temp/
+Obj/
+UnityGenerated/
+Library/
+ 
+# ===================================== #
+# Visual Studio / MonoDevelop generated #
+# ===================================== #
+ExportedObj/
+*.svd
+*.userprefs
+*.csproj
+*.pidb
+*.suo
+*.sln
+*.user
+*.unityproj
+*.booproj
+ 
+# ============ #
+# OS generated #
+# ============ #
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
+
+# ==================== #
+# Unity Test Generated #
+# ==================== #
+test-results
+test-results.meta
+
+# ================ #
+# Project Specific #
+# ================ #
+
+# ====================== #
+# ignore submodules meta #
+# ====================== #
+StrangeRocks/Assets/UnityTestTools
+StrangeRocks/Assets/UnityTestTools.meta
